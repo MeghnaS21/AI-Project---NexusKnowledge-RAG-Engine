@@ -9,6 +9,24 @@ from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
 from langchain_huggingface import HuggingFaceEmbeddings
 
+
+import os
+import subprocess
+
+# --- AUTO-INGESTION LOGIC ---
+# It will check if vector_db folder exists. If not, it will run ingest.py as a subprocess to create the vector database before the main app loads. This ensures a smoother user experience without manual setup steps.
+if not os.path.exists("./vector_db"):
+    with st.spinner("First-time setup: Creating Vector Database..."):
+        try:
+            # run ingest.py as a subprocess to create the vector database
+            subprocess.run(["python", "ingest.py"], check=True)
+            st.success("Vector Database created successfully!")
+        except Exception as e:
+            st.error(f"Error during ingestion: {e}")
+            st.stop()
+
+
+
 # Load environment variables (GROQ_API_KEY)
 load_dotenv()
 
