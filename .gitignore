@@ -1,0 +1,28 @@
+# API Keys & Environment
+.env
+.env.local
+.env.production
+
+# Vector Database — runtime mein banega
+vector_db/
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# HuggingFace downloaded models
+.cache/
+
+# Mac OS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Jupyter
+.ipynb_checkpoints/
