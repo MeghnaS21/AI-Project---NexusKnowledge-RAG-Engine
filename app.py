@@ -176,4 +176,4 @@ if user_raw_input := st.chat_input("Ask about Anya or the documentation..."):
                         blocked_msg = "⚠️ Response blocked: The assistant tried to output restricted information."
                         st.warning(blocked_msg)
                 except Exception as e:
-                    st.error("An error occurred during processing. Please try a different query.")
+                    st.error("An error has occurred during processing. Please try a different query.")
