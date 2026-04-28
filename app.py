@@ -1,3 +1,4 @@
+import sys 
 import streamlit as st
 import re
 import os
@@ -9,22 +10,24 @@ from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
 from langchain_huggingface import HuggingFaceEmbeddings
 
-
-import os
 import subprocess
 
 # --- AUTO-INGESTION LOGIC ---
-# It will check if vector_db folder exists. If not, it will run ingest.py as a subprocess to create the vector database before the main app loads. This ensures a smoother user experience without manual setup steps.
 if not os.path.exists("./vector_db"):
     with st.spinner("First-time setup: Creating Vector Database..."):
         try:
-            # run ingest.py as a subprocess to create the vector database
-            subprocess.run(["python", "ingest.py"], check=True)
+            # sys.executable use karne se current environment ka sahi python path milta hai
+            result = subprocess.run(
+                [sys.executable, "ingest.py"], 
+                capture_output=True, 
+                text=True, 
+                check=True
+            )
             st.success("Vector Database created successfully!")
-        except Exception as e:
-            st.error(f"Error during ingestion: {e}")
+        except subprocess.CalledProcessError as e:
+            # Ye aapko batayega ki ingest.py kyu fail hua
+            st.error(f"Ingest.py failed! Error: {e.stderr}")
             st.stop()
-
 
 
 # Load environment variables (GROQ_API_KEY)
