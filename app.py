@@ -34,7 +34,7 @@ if not os.path.exists("./vector_db"):
 load_dotenv()
 
 # --- UI CONFIGURATION ---
-st.set_page_config(page_title="CorpQuery Pro", page_icon="🚀")
+st.set_page_config(page_title="Learn from Anya's Journey", page_icon="🚀")
 st.title("🚀 Learn from Anya's Journey")
 
 # --- 1. SECURITY: Input Sanitization ---
