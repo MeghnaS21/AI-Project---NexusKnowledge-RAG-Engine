@@ -12,6 +12,9 @@ from langchain_huggingface import HuggingFaceEmbeddings
 
 import subprocess
 
+# --- UI CONFIGURATION ---
+st.set_page_config(page_title="Learn from Anya's Journey", page_icon="🚀")
+
 # --- AUTO-INGESTION LOGIC ---
 if not os.path.exists("./vector_db"):
     with st.spinner("First-time setup: Creating Vector Database..."):
@@ -33,8 +36,6 @@ if not os.path.exists("./vector_db"):
 # Load environment variables (GROQ_API_KEY)
 load_dotenv()
 
-# --- UI CONFIGURATION ---
-st.set_page_config(page_title="Learn from Anya's Journey", page_icon="🚀")
 st.title("🚀 Learn from Anya's Journey")
 
 # --- 1. SECURITY: Input Sanitization ---
