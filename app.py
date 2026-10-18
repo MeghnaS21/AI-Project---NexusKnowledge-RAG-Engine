@@ -12,7 +12,7 @@ from langchain_huggingface import HuggingFaceEmbeddings
 
 import subprocess
 
-# --- UI CONFIGURATION ---
+# --- UI CONFIGURATION ---   jjj
 st.set_page_config(page_title="Learn from Anya's Journey", page_icon="🚀")
 
 # --- AUTO-INGESTION LOGIC ---
